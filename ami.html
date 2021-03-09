@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Amicable Numbers</title>
+  
+  <style>  
+	body {font-size: 24px;background-color: #fffc4d;text-align: center;}
+	.print{
+		color: blue;
+	}
+  </style>  
+  </head>
+
+	<body>
+	<h1> Find Out If Two Numbers Are Amicable !</h1>
+	
+	<form>
+	<label for="one">First Number:</label><br>
+	<input type = "text" id="one"/><br>
+	<label for="two">Second Number:</label><br>
+	<input type = "text" id="two"/><br>
+	<input type = "button" value="Submit" onclick="factors();"><br>
+	</form>
+	
+	<script>
+ function factors(){
+		var one= document.getElementById("one").value;
+		var two= document.getElementById("two").value;
+		//set factor sums and factor arrays as 0 for defaul//
+		var sum_one=0;
+		var sum_two=0;
+		var factor_one=[];
+		var factor_two=[];
+		//count is used to place each factor into the array in a sorted order//
+		var count1=0;
+		var count2=0;
+		//for every factor of the first number, save it to an array and add the count by 1//
+		for (var i = 0; i <= one; i++) {
+			if (one % i == 0) {
+					sum_one += i;
+					count1 ++ ;
+				factor_one[count1-1] = i;
+			}
+		}
+		//for second number//
+		for (var i = 0; i <= two; i++) {
+			if (two % i == 0) {
+					sum_two += i;
+					count2 ++ ;
+				factor_two[count2-1] = i;
+			}
+		}
+		//exclude the numbers themselves as factors by the decrement operator//
+		factor_one.length--;
+		factor_two.length--;
+		//pop up a window to users displaying all factors//
+		alert("Factors For" + one + " include : " + factor_one);
+		alert("Factors For " + two + " include : " + factor_two);
+		if (sum_one==sum_two){
+		document.getElementById("print").innerHTML=  one + " and "+
+two+ " are AMICABLE NUMBERS! ";}
+		else {
+		document.getElementById("print").innerHTML= "Oh no,  " +one+ " and "
++two+ " are not AMICABLE:( ";}
+		return false;
+	}	
+	</script>
+	
+	<br>
+	<div id = "print">
+	<br>
+</body>
+</html>
